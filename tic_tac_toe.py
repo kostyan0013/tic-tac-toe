@@ -50,14 +50,11 @@ def print_board(board):
                 print 'O',
             elif board[i*3+j] == -1:
                 print i*3+j+1,  
-
             else:
                 print ' ',
-            
             if j != 2:
                 print " | ",
         print
-        
         if i != 2:
             print "-----------------"
         else: 
@@ -82,13 +79,11 @@ def bot_turn(s,turn):
         elif (fill(s,[3*i,3*i+1,3*i+2],turn) != None): return fill(s,[3*i,3*i+1,3*i+2],turn)
     if (fill(s,[0,4,8],turn) != None): return fill(s,[0,4,8],turn)
     elif fill(s,[2,4,6],turn): return fill(s,[2,4,6],turn)
-
     for i in range(3):
         if (fill(s,[i,i+3,i+6],turn+1) != None): return fill(s,[i,i+3,i+6],turn+1)
         elif (fill(s,[3*i,3*i+1,3*i+2],turn+1) != None): return fill(s,[3*i,3*i+1,3*i+2],turn+1)
     if (fill(s,[0,4,8],turn+1) != None): return fill(s,[0,4,8],turn+1)
     elif fill(s,[2,4,6],turn+1): return fill(s,[2,4,6],turn+1)
-    
     if s[4] == -1: return 4
     if turn % 2 == 1:
         if (s[0] == 0) and (s[8] == -1): return 8
@@ -117,7 +112,6 @@ def bot_turn(s,turn):
             if (take_corner(s) != None): return take_corner(s)        
             
     return take_side(s)
-    
     
 def play_bot(mode):
     board = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
@@ -160,21 +154,7 @@ def try_turn(board,turn,current):
         return True
     else:
         print 'Wrong turn'
-    
-def play_gamers():
-    board = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
-    turn = 1
-    while not(check_win(board)):
-        print_board(board)
-        current = raw_input('Choose place for %s' % ('X: ' if turn%2 == 1 else 'O: '))
-        try:
-            current = int(current)-1
-            try_turn(board,turn,current)
-        except:
-            print 'Wrong turn'
-        turn += 1
-    print_board(board)
-    
+        
 while True:
     mode = raw_input("Write 1 to play for X or 0 for O: ")
     play_bot(mode)
