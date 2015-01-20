@@ -1,16 +1,5 @@
 from random import choice
 
-"""def check_turn(f,f1):
-    if (f == f1) or (levenshtein(f,f1) > 1) or (len(f)<9) or (len(f) > 9):
-        return False
-        exit
-    for i in range(0,10):
-        if (f1[i] != f[i]) and (f[i] != 0):
-            return False
-            exit
-    else:
-        return True"""
-
 def levenshtein(k,p): 
     mx = 0
     for i in range(len(k)):
